@@ -5,5 +5,5 @@ Simple MOTD script for Debian Servers.
 
 ## How-to:
 ```
-echo -e "\n# motd\n/home/shells/motd.sh" >> ~/.profile
+# echo -e "\n# motd\n/home/shells/motd.sh" >> ~/.profile
 ```

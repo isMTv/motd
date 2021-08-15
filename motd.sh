@@ -25,7 +25,7 @@ local out=""
 }
 
 # Max width used for components in second column
-WIDTH=40
+WIDTH=55
 
 # Prints text as either acitve or inactive
 # $1 - text to print
@@ -37,7 +37,7 @@ print_status () {
     else
         out+="${CE}▼${CN}"
     fi
-    out+=" $1${CN}"
+    out+=" $1${CN} ${CA}$3${CN}"
     echo "$out"
 }
 
@@ -151,7 +151,9 @@ statuses=()
 for key in "${!services[@]}"; do
     # systemctl is-active returns non-zero code if service is inactive
     set +e; status=$(systemctl is-active ${services[$key]}); set -e
-    statuses+=("$(print_status "$key" "$status")")
+    if [ "$status" = "active" ]; then status_mem=$(service ${services[$key]} status | awk '/Memory:/ {print $2}'); fi
+    statuses+=("$(print_status "$key" "$status" "$status_mem")")
+    unset status_mem
 done
 services_out="$(print_wrap $WIDTH "${statuses[@]}")"
 
@@ -184,6 +186,7 @@ echo -e "Swap ..........: ${swap_out}"
 echo "*------------------------------------------------------*"
 echo -e "Disk space ... : \n${disk_out}"
 echo "*------------------------------------------------------*"
-echo -e "Services ..... : ${services_out}"
+echo -e "Services ..... : \n${services_out}"
+echo "*------------------------------------------------------*"
 echo -e "Updates ...... : ${updates_out}"
 echo

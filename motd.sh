@@ -138,11 +138,11 @@ done
 
 # services
 declare -A services
-services["SSH"]="sshd"
+services["SSHd"]="sshd"
 services["NTP"]="ntp"
 services["Nginx"]="nginx"
 services["PHP-FPM"]="php7.3-fpm"
-services["MariaDB"]="mysql"
+services["Maria-DB"]="mysql"
 services["Fail2Ban"]="fail2ban"
 services["Seafile"]="seafile"
 services["Prosody"]="prosody"

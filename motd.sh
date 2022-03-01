@@ -167,6 +167,8 @@ services["Mikrocata"]="mikrocata"
 services["Bashcata"]="bashcata"
 services["TZSPreplay"]="TZSPreplay@tzsp0"
 services["GNS3"]="gns3"
+services["NUT-Server"]="nut-server"
+services["NUT-Client"]="nut-client"
 statuses=()
 for key in "${!services[@]}"; do
     # systemctl is-active returns non-zero code if service is inactive

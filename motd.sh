@@ -140,6 +140,7 @@ done
 declare -A services
 services["SSHd"]="sshd"
 services["NTP"]="ntp"
+services["Timesyncd"]="systemd-timesyncd.service"
 services["Nginx"]="nginx"
 services["PHP-FPM"]="php7.4-fpm"
 services["MariaDB"]="mariadb"
